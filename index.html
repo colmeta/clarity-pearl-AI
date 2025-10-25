@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLARITY AI - Enterprise Intelligence & AI Automation</title>
+    <title>Clarity Pearl | Enterprise AI That Actually Makes Money</title>
     <style>
         * {
             margin: 0;
@@ -12,50 +12,40 @@
         }
         
         :root {
-            --primary: #667eea;
-            --secondary: #764ba2;
-            --accent: #f093fb;
-            --dark: #0a0a0f;
-            --darker: #050508;
-            --light: rgba(255, 255, 255, 0.9);
-            --card-bg: rgba(255, 255, 255, 0.03);
+            --primary: #0ea5e9;
+            --secondary: #14b8a6;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --light: #f8fafc;
         }
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            color: var(--light);
-            background: var(--darker);
+            color: var(--dark);
             overflow-x: hidden;
+            background: white;
             line-height: 1.6;
         }
         
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Navigation */
-        .navbar {
+        /* Premium Navigation */
+        nav {
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
-            height: 70px;
-            background: rgba(10, 10, 15, 0.95);
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 clamp(20px, 5vw, 80px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
             z-index: 1000;
-            transition: all 0.3s;
+            padding: 0 5%;
         }
         
-        .navbar.scrolled {
-            height: 60px;
-            background: rgba(10, 10, 15, 0.98);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
         }
         
         .logo {
@@ -64,237 +54,170 @@
             gap: 12px;
             font-size: 24px;
             font-weight: 900;
-            color: white;
-            text-decoration: none;
+            color: var(--primary);
         }
         
         .logo-icon {
-            font-size: 28px;
-            filter: drop-shadow(0 0 10px var(--primary));
+            font-size: 32px;
+            filter: drop-shadow(0 2px 8px rgba(14, 165, 233, 0.3));
         }
         
         .nav-links {
             display: flex;
-            gap: clamp(20px, 3vw, 40px);
+            gap: 35px;
             align-items: center;
         }
         
         .nav-links a {
-            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
+            color: #64748b;
             font-weight: 600;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
+            font-size: 15px;
+            transition: color 0.2s;
         }
         
         .nav-links a:hover {
-            color: white;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
+            color: var(--primary);
         }
         
         .nav-cta {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white !important;
-            padding: 10px 25px;
+            padding: 12px 28px;
             border-radius: 25px;
-            font-weight: 700;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
-        }
-        
-        .nav-cta::after {
-            display: none;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+            transition: transform 0.2s;
         }
         
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
         }
         
-        /* Mobile menu toggle */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-        
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            transition: all 0.3s;
-        }
-        
-        /* Hero Section */
+        /* Hero Section - Premium */
         .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
+            margin-top: 70px;
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
             align-items: center;
-            justify-content: center;
+            gap: 80px;
+            padding: 80px 5%;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f8fafc 100%);
+            position: relative;
             overflow: hidden;
-            background: radial-gradient(ellipse at top, rgba(102, 126, 234, 0.15), transparent 50%),
-                        radial-gradient(ellipse at bottom, rgba(118, 75, 162, 0.15), transparent 50%),
-                        var(--dark);
-            padding: 100px 20px 60px;
         }
         
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 60s linear infinite;
-            opacity: 0.3;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.15), transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
         }
         
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, 30px) rotate(5deg); }
         }
         
         .hero-content {
-            position: relative;
+            max-width: 650px;
             z-index: 10;
-            text-align: center;
-            max-width: 1200px;
-            padding: 0 20px;
         }
         
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(102, 126, 234, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            color: white;
-            padding: 10px 25px;
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            color: var(--primary);
+            padding: 8px 20px;
             border-radius: 50px;
             font-size: 13px;
             font-weight: 700;
-            margin-bottom: 30px;
-            animation: pulse 3s infinite;
+            margin-bottom: 25px;
             letter-spacing: 0.5px;
         }
         
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
-            50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
-        }
-        
         .hero h1 {
-            font-size: clamp(40px, 8vw, 90px);
+            font-size: clamp(42px, 6vw, 72px);
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 25px;
-            letter-spacing: -2px;
+            letter-spacing: -1.5px;
         }
         
         .gradient-text {
-            background: linear-gradient(135deg, #fff 0%, var(--primary) 30%, var(--accent) 60%, var(--secondary) 100%);
-            background-size: 200% 200%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradientFlow 5s ease infinite;
-        }
-        
-        @keyframes gradientFlow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
         }
         
         .hero-subtitle {
-            font-size: clamp(18px, 2.5vw, 28px);
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 20px;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-        
-        .hero-description {
-            font-size: clamp(15px, 1.8vw, 19px);
-            color: rgba(255, 255, 255, 0.6);
-            max-width: 800px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
+            font-size: clamp(18px, 2vw, 24px);
+            color: #475569;
+            margin-bottom: 35px;
+            line-height: 1.6;
         }
         
         .cta-group {
             display: flex;
             gap: 20px;
-            justify-content: center;
+            margin-bottom: 50px;
             flex-wrap: wrap;
-            margin-bottom: 60px;
-        }
-        
-        .btn {
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            border: none;
         }
         
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 17px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+            transition: all 0.3s;
         }
         
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.4);
         }
         
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 17px;
+            font-weight: 700;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
         }
         
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.4);
+            background: #f0f9ff;
         }
         
-        /* Trust indicators */
-        .trust-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
-            padding: 40px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        .trust-indicators {
+            display: flex;
+            gap: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0,0,0,0.1);
         }
         
         .trust-item {
@@ -302,472 +225,531 @@
         }
         
         .trust-number {
-            font-size: 42px;
+            font-size: 36px;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
+            color: var(--primary);
         }
         
         .trust-label {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.6);
+            color: #64748b;
             font-weight: 600;
         }
         
-        /* Section styling */
-        section {
-            padding: clamp(60px, 10vw, 120px) clamp(20px, 5vw, 80px);
+        .hero-visual {
             position: relative;
+            z-index: 10;
+        }
+        
+        .hero-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(14, 165, 233, 0.3);
+        }
+        
+        .hero-image::before {
+            content: '🦷';
+            font-size: 200px;
+            opacity: 0.2;
+        }
+        
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            animation: floatCard 3s ease-in-out infinite;
+        }
+        
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .card-1 {
+            top: 15%;
+            left: -10%;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+        }
+        
+        .card-2 {
+            bottom: 15%;
+            right: -10%;
+            animation-delay: 1s;
+        }
+        
+        .card-stat {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+        
+        .card-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        /* Problem Section */
+        .problem-section {
+            padding: 100px 5%;
+            background: white;
         }
         
         .section-header {
             text-align: center;
-            max-width: 900px;
-            margin: 0 auto 60px;
+            max-width: 800px;
+            margin: 0 auto 70px;
         }
         
         .section-label {
-            display: inline-block;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 15px;
-            padding: 5px 15px;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 20px;
         }
         
         .section-title {
-            font-size: clamp(32px, 5vw, 56px);
+            font-size: clamp(36px, 5vw, 56px);
             font-weight: 900;
             margin-bottom: 20px;
             letter-spacing: -1px;
-            line-height: 1.2;
         }
         
         .section-subtitle {
-            font-size: clamp(16px, 2vw, 20px);
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.7;
+            font-size: 20px;
+            color: #64748b;
+            line-height: 1.6;
         }
         
-        /* Problem cards */
         .problem-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
-            margin-top: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
         .problem-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(239, 68, 68, 0.2);
+            background: #fef2f2;
+            border: 2px solid #fecaca;
             border-radius: 20px;
             padding: 40px;
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .problem-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #ef4444, #dc2626);
-            transform: scaleX(0);
-            transition: transform 0.4s;
+            transition: all 0.3s;
         }
         
         .problem-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(239, 68, 68, 0.5);
-            box-shadow: 0 20px 60px rgba(239, 68, 68, 0.2);
-        }
-        
-        .problem-card:hover::before {
-            transform: scaleX(1);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(239, 68, 68, 0.15);
+            border-color: #ef4444;
         }
         
         .problem-icon {
             font-size: 48px;
             margin-bottom: 20px;
-            display: block;
         }
         
         .problem-title {
             font-size: 22px;
             font-weight: 800;
             margin-bottom: 12px;
+            color: #dc2626;
         }
         
         .problem-desc {
-            font-size: 15px;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+            color: #475569;
             line-height: 1.7;
             margin-bottom: 20px;
         }
         
         .problem-cost {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 900;
-            color: #ef4444;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: #dc2626;
         }
         
-        /* CLARITY Enterprise */
-        .clarity-section {
-            background: radial-gradient(ellipse at center, rgba(102, 126, 234, 0.1), transparent 70%);
-            position: relative;
+        /* Products Section */
+        .products-section {
+            padding: 100px 5%;
+            background: linear-gradient(180deg, var(--light) 0%, white 100%);
         }
         
-        .clarity-logo {
-            font-size: 64px;
-            font-weight: 900;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-        }
-        
-        .clarity-features {
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
-        .clarity-feature {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 35px;
-            transition: all 0.4s;
-        }
-        
-        .clarity-feature:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary);
-            box-shadow: 0 25px 70px rgba(102, 126, 234, 0.2);
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .feature-icon {
-            font-size: 52px;
-            margin-bottom: 20px;
-            display: block;
-            filter: drop-shadow(0 0 10px currentColor);
-        }
-        
-        .feature-title {
-            font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-        
-        .feature-desc {
-            font-size: 15px;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.7;
-        }
-        
-        /* Services grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-        
-        .service-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 40px;
+        .product-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 45px;
             transition: all 0.4s;
             position: relative;
             overflow: hidden;
         }
         
-        .service-card::before {
+        .product-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             transform: scaleX(0);
             transition: transform 0.4s;
         }
         
-        .service-card:hover {
+        .product-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(14, 165, 233, 0.2);
             border-color: var(--primary);
-            box-shadow: 0 25px 70px rgba(102, 126, 234, 0.3);
-            background: rgba(255, 255, 255, 0.05);
         }
         
-        .service-card:hover::before {
+        .product-card:hover::before {
             transform: scaleX(1);
         }
         
-        .service-icon {
+        .product-icon {
             font-size: 56px;
             margin-bottom: 20px;
-            display: block;
         }
         
-        .service-title {
-            font-size: 24px;
+        .product-title {
+            font-size: 26px;
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
         
-        .service-desc {
-            font-size: 15px;
-            color: rgba(255, 255, 255, 0.6);
+        .product-desc {
+            font-size: 16px;
+            color: #64748b;
             line-height: 1.7;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
-        .service-price {
-            font-size: 18px;
-            color: var(--primary);
-            font-weight: 700;
-            margin-top: 15px;
-        }
-        
-        .service-features {
+        .product-features {
             list-style: none;
-            margin-top: 20px;
+            margin: 25px 0;
         }
         
-        .service-features li {
-            padding: 10px 0;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        .product-features li {
+            padding: 12px 0;
+            font-size: 15px;
+            color: #475569;
+            border-bottom: 1px solid #f1f5f9;
             display: flex;
-            align-items: center;
+            align-items: start;
             gap: 10px;
         }
         
-        .service-features li::before {
+        .product-features li::before {
             content: '✓';
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 16px;
+            color: #10b981;
+            font-weight: 900;
+            font-size: 18px;
+            flex-shrink: 0;
         }
         
-        /* ROI Calculator */
-        .roi-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 20px;
+        }
+        
+        .product-cta {
+            margin-top: 25px;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .product-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+        }
+        
+        /* CLARITY Engine Spotlight */
+        .clarity-spotlight {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
             position: relative;
             overflow: hidden;
         }
         
-        .roi-section::before {
+        .clarity-spotlight::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 60%);
-            animation: roiFloat 20s ease-in-out infinite;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+            border-radius: 50%;
+            top: -400px;
+            right: -400px;
         }
         
-        @keyframes roiFloat {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-30px, 30px) rotate(10deg); }
-        }
-        
-        .roi-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+        .clarity-content {
+            max-width: 1400px;
+            margin: 0 auto;
             position: relative;
             z-index: 10;
         }
         
+        .clarity-logo {
+            font-size: 72px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .clarity-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .clarity-feature {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.3s;
+        }
+        
+        .clarity-feature:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        
+        .feature-desc {
+            font-size: 16px;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+        
+        /* ROI Calculator */
+        .roi-section {
+            padding: 100px 5%;
+            background: white;
+        }
+        
+        .roi-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
         .roi-content h2 {
-            font-size: clamp(36px, 5vw, 52px);
+            font-size: 48px;
             font-weight: 900;
             margin-bottom: 30px;
-            line-height: 1.2;
         }
         
         .roi-content p {
-            font-size: 19px;
+            font-size: 18px;
+            color: #475569;
             line-height: 1.8;
             margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.95);
         }
         
         .roi-calculator {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(30px);
-            border-radius: 25px;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border: 2px solid var(--primary);
+            border-radius: 24px;
             padding: 45px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .roi-stat {
-            margin-bottom: 35px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
         
         .roi-stat:last-child {
-            margin-bottom: 0;
             border-bottom: none;
         }
         
         .roi-label {
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 10px;
-            opacity: 0.9;
+            color: #64748b;
+            margin-bottom: 8px;
         }
         
         .roi-number {
-            font-size: 44px;
+            font-size: 42px;
             font-weight: 900;
-            color: #ffd700;
-            margin-bottom: 5px;
+            color: var(--primary);
         }
         
         .roi-description {
-            font-size: 14px;
-            opacity: 0.85;
-            line-height: 1.6;
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 5px;
         }
         
-        /* Real Estate Focus */
-        .realestate-section {
-            background: var(--dark);
+        /* Testimonials */
+        .testimonials-section {
+            padding: 100px 5%;
+            background: var(--light);
         }
         
-        .realestate-stats {
+        .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            margin: 50px 0;
+            max-width: 1400px;
+            margin: 60px auto 0;
         }
         
-        .stat-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(102, 126, 234, 0.2);
+        .testimonial-card {
+            background: white;
             border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
         }
         
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        .stars {
+            color: #fbbf24;
+            font-size: 20px;
+            margin-bottom: 20px;
         }
         
-        .stat-number {
-            font-size: 48px;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
+        .testimonial-text {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #475569;
+            margin-bottom: 25px;
         }
         
-        .stat-label {
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .author-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        
+        .author-info p {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 600;
+            color: #64748b;
         }
         
         /* Final CTA */
         .final-cta {
-            background: radial-gradient(ellipse at center, rgba(102, 126, 234, 0.15), transparent 70%);
+            padding: 100px 5%;
+            background: linear-gradient(135deg, #f0f9ff, white);
             text-align: center;
         }
         
         .final-cta h2 {
-            font-size: clamp(36px, 6vw, 68px);
+            font-size: clamp(36px, 5vw, 64px);
             font-weight: 900;
             margin-bottom: 25px;
-            letter-spacing: -1px;
         }
         
         .final-cta p {
             font-size: 22px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto 40px;
         }
         
         /* Footer */
-        .footer {
-            background: var(--darker);
-            padding: 80px clamp(20px, 5vw, 80px) 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 80px 5% 40px;
         }
         
         .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 60px;
-            max-width: 1400px;
-            margin: 0 auto 50px;
+            margin-bottom: 50px;
         }
         
         .footer-brand {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
+            color: white;
+            margin-bottom: 20px;
         }
         
         .footer-desc {
-            color: rgba(255, 255, 255, 0.5);
-            line-height: 1.8;
-            margin-bottom: 25px;
             font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 25px;
         }
         
         .footer-contact a {
             color: var(--primary);
             text-decoration: none;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-weight: 600;
-            transition: color 0.3s;
-        }
-        
-        .footer-contact a:hover {
-            color: var(--accent);
         }
         
         .footer-title {
             font-weight: 700;
+            color: white;
             margin-bottom: 20px;
             font-size: 16px;
         }
@@ -779,10 +761,9 @@
         }
         
         .footer-links a {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
+            transition: color 0.2s;
         }
         
         .footer-links a:hover {
@@ -792,14 +773,59 @@
         .footer-bottom {
             text-align: center;
             padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: rgba(255, 255, 255, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 14px;
+        }
+        
+        /* Chatbot Trigger */
+        .chat-trigger {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            cursor: pointer;
+            box-shadow: 0 10px 40px rgba(14, 165, 233, 0.4);
+            z-index: 999;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        
+        .chat-trigger:hover {
+            transform: scale(1.1);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 10px 40px rgba(14, 165, 233, 0.4); }
+            50% { box-shadow: 0 10px 60px rgba(14, 165, 233, 0.6); }
         }
         
         /* Responsive */
         @media (max-width: 1024px) {
-            .roi-grid {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+            
+            .cta-group {
+                justify-content: center;
+            }
+            
+            .trust-indicators {
+                justify-content: center;
+            }
+            
+            .roi-container {
                 grid-template-columns: 1fr;
             }
             
@@ -813,13 +839,8 @@
                 display: none;
             }
             
-            .menu-toggle {
-                display: flex;
-            }
-            
-            .services-grid,
-            .problem-grid,
-            .clarity-features {
+            .products-grid,
+            .testimonials-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -827,36 +848,27 @@
                 grid-template-columns: 1fr;
             }
             
-            .cta-group {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
+            .floating-card {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <a href="#" class="logo">
-            <span class="logo-icon">⚡</span>
-            <span>CLARITY AI</span>
-        </a>
-        <div class="nav-links">
-            <a href="#problems">Problems</a>
-            <a href="#clarity">Enterprise</a>
-            <a href="#services">Services</a>
-            <a href="#realestate">Real Estate</a>
-            <a href="#roi">ROI</a>
-            <a href="https://wa.me/256705885118" class="nav-cta">Get Started →</a>
-        </div>
-        <div class="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🦷</span>
+                <span>Clarity Pearl</span>
+            </div>
+            <div class="nav-links">
+                <a href="#problems">Problems</a>
+                <a href="#products">Solutions</a>
+                <a href="#clarity">Enterprise</a>
+                <a href="#roi">ROI</a>
+                <a href="https://wa.me/256705885118" class="nav-cta">Get Started →</a>
+            </div>
         </div>
     </nav>
 
@@ -864,7 +876,7 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge">
-                ✨ Trusted by Fortune 500s & Real Estate Leaders
+                ✨ Trusted by Fortune 500 & Growing Businesses
             </div>
             
             <h1>
@@ -873,46 +885,50 @@
             </h1>
             
             <p class="hero-subtitle">
-                From $200/month AI agents to $500K enterprise intelligence platforms
-            </p>
-            
-            <p class="hero-description">
-                We build AI that captures leads 24/7, automates compliance audits, writes winning proposals, 
-                and transforms document chaos into actionable intelligence. One partner. Zero bullshit.
+                From $200/month AI agents to $500K enterprise intelligence platforms. 
+                We build AI that captures leads 24/7, automates compliance, and writes winning proposals.
             </p>
             
             <div class="cta-group">
-                <a href="#services" class="btn btn-primary">
-                    🚀 Small Business Solutions
+                <a href="#products" class="btn-primary">
+                    🚀 Explore Solutions
                 </a>
-                <a href="#clarity" class="btn btn-secondary">
-                    🏢 Enterprise Intelligence
+                <a href="https://wa.me/256705885118" class="btn-secondary">
+                    📞 Talk to Us
                 </a>
             </div>
             
-            <div class="trust-bar">
-                <div class="trust-item">
-                    <div class="trust-number">$731.6B</div>
-                    <div class="trust-label">AI in Real Estate by 2028</div>
-                </div>
+            <div class="trust-indicators">
                 <div class="trust-item">
                     <div class="trust-number">90%</div>
-                    <div class="trust-label">Time Saved on Analysis</div>
+                    <div class="trust-label">Time Saved</div>
                 </div>
                 <div class="trust-item">
-                    <div class="trust-number">37%</div>
-                    <div class="trust-label">Tasks Automated</div>
+                    <div class="trust-number">24/7</div>
+                    <div class="trust-label">AI Response</div>
                 </div>
                 <div class="trust-item">
-                    <div class="trust-number">68%</div>
-                    <div class="trust-label">Switch Due to Poor Communication</div>
+                    <div class="trust-number">$270K</div>
+                    <div class="trust-label">Avg. Annual Savings</div>
                 </div>
+            </div>
+        </div>
+        
+        <div class="hero-visual">
+            <div class="hero-image"></div>
+            <div class="floating-card card-1">
+                <div class="card-stat">$22,500</div>
+                <div class="card-label">Monthly Revenue Recovered</div>
+            </div>
+            <div class="floating-card card-2">
+                <div class="card-stat">3 sec</div>
+                <div class="card-label">Response Time</div>
             </div>
         </div>
     </section>
 
     <!-- Problem Section -->
-    <section id="problems">
+    <section id="problems" class="problem-section">
         <div class="section-header">
             <div class="section-label">THE INVISIBLE TAX</div>
             <h2 class="section-title">Your Team is Hemorrhaging Money</h2>
@@ -921,357 +937,333 @@
         
         <div class="problem-grid">
             <div class="problem-card">
-                <span class="problem-icon">📧</span>
-                <h3 class="problem-title">Expense Reports</h3>
-                <p class="problem-desc">
-                    2-3 hours monthly hunting receipts, categorizing expenses, fighting Excel templates. 
-                    Your CFO's team wastes 40% of their time on data entry.
-                </p>
-                <div class="problem-cost">💸 $5,400/year lost per employee</div>
-            </div>
-            
-            <div class="problem-card">
-                <span class="problem-icon">📞</span>
+                <div class="problem-icon">📞</div>
                 <h3 class="problem-title">After-Hours Leads</h3>
                 <p class="problem-desc">
-                    30-40 qualified buyers call when you're closed. No voicemail. They hire your competitor by morning.
-                    68% of customers switch due to poor communication.
+                    30-40 qualified buyers call when you're closed. No response. They hire your competitor by morning.
                 </p>
-                <div class="problem-cost">💸 $36,000/year lost</div>
+                <div class="problem-cost">💸 $36,000/year</div>
             </div>
             
             <div class="problem-card">
-                <span class="problem-icon">📄</span>
+                <div class="problem-icon">📄</div>
                 <h3 class="problem-title">Document Review</h3>
                 <p class="problem-desc">
                     Lawyers at $400/hour reading contracts. Auditors spending weeks on compliance. 
-                    Engineers buried in specs. Genius wasted on paperwork.
+                    Genius wasted on paperwork.
                 </p>
-                <div class="problem-cost">💸 $150K+/year lost</div>
+                <div class="problem-cost">💸 $150K+/year</div>
             </div>
             
             <div class="problem-card">
-                <span class="problem-icon">🏠</span>
-                <h3 class="problem-title">Real Estate Response Time</h3>
+                <div class="problem-icon">📧</div>
+                <h3 class="problem-title">Email & Calendar Chaos</h3>
                 <p class="problem-desc">
-                    Buyers expect instant responses. Every hour delay = 20% drop in conversion. 
-                    Your competitors with AI are stealing your deals.
+                    Executives spending 3 hours daily on email, scheduling, CRM updates. 
+                    That's 30% of their salary wasted.
                 </p>
-                <div class="problem-cost">💸 $48,000/year lost</div>
+                <div class="problem-cost">💸 $48,000/year</div>
             </div>
             
             <div class="problem-card">
-                <span class="problem-icon">⚖️</span>
+                <div class="problem-icon">📊</div>
+                <h3 class="problem-title">Expense Reports</h3>
+                <p class="problem-desc">
+                    2-3 hours monthly hunting receipts, categorizing expenses, fighting Excel. 
+                    Your CFO's team wastes 40% of their time.
+                </p>
+                <div class="problem-cost">💸 $5,400/year per employee</div>
+            </div>
+            
+            <div class="problem-card">
+                <div class="problem-icon">⚖️</div>
                 <h3 class="problem-title">Compliance Audits</h3>
                 <p class="problem-desc">
                     Manual compliance checks take 40+ hours. Miss one regulation = $250K fine. 
                     Healthcare, finance, legal drowning in paperwork.
                 </p>
-                <div class="problem-cost">💸 $280K/year in risk + labor</div>
+                <div class="problem-cost">💸 $280K/year in risk</div>
             </div>
             
             <div class="problem-card">
-                <span class="problem-icon">💼</span>
+                <div class="problem-icon">💼</div>
                 <h3 class="problem-title">Government Proposals</h3>
                 <p class="problem-desc">
                     Writing RFP responses takes 80+ hours. Miss deadlines. Generic proposals lose. 
-                    $500K contracts going to competitors with better systems.
+                    $500K contracts going to competitors.
                 </p>
                 <div class="problem-cost">💸 $2M+ in lost contracts</div>
             </div>
         </div>
     </section>
 
-    <!-- CLARITY Enterprise Section -->
-    <section id="clarity" class="clarity-section">
-        <div class="section-header">
-            <div class="clarity-logo">CLARITY</div>
-            <div class="section-label">ENTERPRISE INTELLIGENCE PLATFORM</div>
-            <h2 class="section-title">Your Organization's Second Brain</h2>
-            <p class="section-subtitle">
-                CLARITY transforms document chaos into strategic intelligence. Upload contracts, audits, 
-                financials, specs—receive expert analysis in minutes, not weeks.
-            </p>
-        </div>
-        
-        <div class="clarity-features">
-            <div class="clarity-feature">
-                <span class="feature-icon">🧠</span>
-                <h3 class="feature-title">Expert-Level Analysis</h3>
-                <p class="feature-desc">
-                    Domain Accelerators make CLARITY think like your best analyst. 
-                    Legal contracts? It thinks like a lawyer. Financial statements? Like an auditor.
-                </p>
-            </div>
-            
-            <div class="clarity-feature">
-                <span class="feature-icon">🔒</span>
-                <h3 class="feature-title">Intelligence Vault</h3>
-                <p class="feature-desc">
-                    Perfect memory that learns your business. Past projects, templates, processes. 
-                    The more you use it, the smarter it gets. Your organization's institutional knowledge, secured.
-                </p>
-            </div>
-            
-            <div class="clarity-feature">
-                <span class="feature-icon">🎯</span>
-                <h3 class="feature-title">Multi-Modal Intelligence</h3>
-                <p class="feature-desc">
-                    Reads scanned documents (OCR), transcribes meeting recordings, analyzes video. 
-                    Processes photos of receipts. Complete 360° data understanding.
-                </p>
-            </div>
-            
-            <div class="clarity-feature">
-                <span class="feature-icon">👥</span>
-                <h3 class="feature-title">Team Collaboration</h3>
-                <p class="feature-desc">
-                    Secure workspaces where your entire team shares insights. 
-                    No more duplicate analysis. Everyone works from validated intelligence.
-                </p>
-            </div>
-            
-            <div class="clarity-feature">
-                <span class="feature-icon">⚖️</span>
-                <h3 class="feature-title">Compliance Automation</h3>
-                <p class="feature-desc">
-                    Handles Legal, Financial, Security, Healthcare, Engineering audits automatically. 
-                    Flags non-compliance in seconds. Generates audit-ready reports.
-                </p>
-            </div>
-            
-            <div class="clarity-feature">
-                <span class="feature-icon">📊</span>
-                <h3 class="feature-title">Strategic Intelligence</h3>
-                <p class="feature-desc">
-                    Market analysis, competitive intelligence, investor due diligence, corporate research. 
-                    Transforms raw data into boardroom-ready insights.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services">
+    <!-- Products Section -->
+    <section id="products" class="products-section">
         <div class="section-header">
             <div class="section-label">SOLUTIONS FOR EVERY BUSINESS</div>
             <h2 class="section-title">AI That Actually Makes Money</h2>
             <p class="section-subtitle">No fluff. No theory. Just working systems that capture revenue.</p>
         </div>
         
-        <div class="services-grid">
-            <div class="service-card">
-                <span class="service-icon">🤖</span>
-                <h3 class="service-title">24/7 Lead Capture AI</h3>
-                <p class="service-desc">
+        <div class="products-grid">
+            <!-- 24/7 Lead Capture -->
+            <div class="product-card">
+                <div class="product-icon">🤖</div>
+                <h3 class="product-title">24/7 Lead Capture AI</h3>
+                <p class="product-desc">
                     Website visitors message at 2am? AI responds in 3 seconds. Captures name, email, phone, needs. 
-                    You wake up to hot leads, not missed opportunities.
+                    You wake up to hot leads.
                 </p>
-                <div class="service-price">From $200/month</div>
-                <ul class="service-features">
+                <ul class="product-features">
                     <li>Website chat integration</li>
                     <li>WhatsApp + Facebook automation</li>
                     <li>Instant email notifications</li>
                     <li>95+ languages supported</li>
                     <li>CRM auto-sync</li>
                 </ul>
+                <div class="product-price">From $200/month</div>
+                <button class="product-cta" onclick="window.open('https://wa.me/256705885118?text=Tell%20me%20about%20Lead%20Capture%20AI', '_blank')">
+                    Get Started →
+                </button>
             </div>
             
-            <div class="service-card">
-                <span class="service-icon">🎯</span>
-                <h3 class="service-title">Smart Lead Qualifier</h3>
-                <p class="service-desc">
-                    Stop wasting time on tire-kickers. AI asks qualifying questions, scores Hot/Warm/Cold, 
-                    sends only ready-to-buy prospects. Focus on closers, not browsers.
+            <!-- Executive Assistant -->
+            <div class="product-card">
+                <div class="product-icon">👔</div>
+                <h3 class="product-title">Executive Assistant AI</h3>
+                <p class="product-desc">
+                    AI manages email, schedules meetings, updates CRM, coordinates calendars. 
+                    Your executives get 15 hours/week back.
                 </p>
-                <div class="service-price">From $300/month</div>
-                <ul class="service-features">
-                    <li>Automated qualification flow</li>
-                    <li>Budget & timeline detection</li>
-                    <li>Lead scoring algorithm</li>
-                    <li>Priority alerts for hot leads</li>
-                    <li>Full conversation history</li>
+                <ul class="product-features">
+                    <li>Email triage & response drafting</li>
+                    <li>Calendar management & coordination</li>
+                    <li>CRM updates (Salesforce, HubSpot)</li>
+                    <li>Meeting prep & follow-ups</li>
+                    <li>Priority inbox organization</li>
                 </ul>
+                <div class="product-price">From $400/month</div>
+                <button class="product-cta" onclick="window.open('https://wa.me/256705885118?text=Tell%20me%20about%20Executive%20Assistant%20AI', '_blank')">
+                    Get Started →
+                </button>
             </div>
             
-            <div class="service-card">
-                <span class="service-icon">📅</span>
-                <h3 class="service-title">AI Appointment Scheduler</h3>
-                <p class="service-desc">
-                    "Can I book next Tuesday?" AI checks calendar, books slot, sends confirmations, 
-                    reminds 24hrs before. Handles reschedules. Zero human involvement.
+            <!-- Meeting Management -->
+            <div class="product-card">
+                <div class="product-icon">📅</div>
+                <h3 class="product-title">Meeting Management AI</h3>
+                <p class="product-desc">
+                    Schedules meetings, researches attendees, joins calls, takes notes, sends action items. 
+                    Zero human involvement.
                 </p>
-                <div class="service-price">From $300/month</div>
-                <ul class="service-features">
-                    <li>Natural language booking</li>
-                    <li>Google Calendar sync</li>
-                    <li>Automatic reminders (SMS/Email)</li>
-                    <li>Time zone detection</li>
-                    <li>Reschedule handling</li>
+                <ul class="product-features">
+                    <li>Smart scheduling (finds optimal times)</li>
+                    <li>Attendee research & briefings</li>
+                    <li>Auto-joins meetings & records</li>
+                    <li>Real-time transcription & notes</li>
+                    <li>Action item extraction & follow-ups</li>
                 </ul>
+                <div class="product-price">From $300/month</div>
+                <button class="product-cta" onclick="window.open('https://wa.me/256705885118?text=Tell%20me%20about%20Meeting%20Management%20AI', '_blank')">
+                    Get Started →
+                </button>
             </div>
             
-            <div class="service-card">
-                <span class="service-icon">🏠</span>
-                <h3 class="service-title">Real Estate AI Suite</h3>
-                <p class="service-desc">
+            <!-- Sales Development -->
+            <div class="product-card">
+                <div class="product-icon">📈</div>
+                <h3 class="product-title">Sales Development AI</h3>
+                <p class="product-desc">
+                    AI finds prospects, researches companies, writes personalized outreach, tracks responses. 
+                    Handles 200+ leads simultaneously.
+                </p>
+                <ul class="product-features">
+                    <li>Lead research & enrichment</li>
+                    <li>Personalized email sequences</li>
+                    <li>LinkedIn outreach automation</li>
+                    <li>Response tracking & scoring</li>
+                    <li>CRM sync & pipeline management</li>
+                </ul>
+                <div class="product-price">From $500/month</div>
+                <button class="product-cta" onclick="window.open('https://wa.me/256705885118?text=Tell%20me%20about%20Sales%20Development%20AI', '_blank')">
+                    Get Started →
+                </button>
+            </div>
+            
+            <!-- Real Estate AI -->
+            <div class="product-card">
+                <div class="product-icon">🏠</div>
+                <h3 class="product-title">Real Estate AI Suite</h3>
+                <p class="product-desc">
                     24/7 buyer/seller inquiries, property valuation, listing descriptions, 
-                    client matching, market analysis. Everything real estate agents need.
+                    client matching, market analysis. Everything agents need.
                 </p>
-                <div class="service-price">From $500/month</div>
-                <ul class="service-features">
+                <ul class="product-features">
                     <li>Instant lead response</li>
                     <li>AI property valuations</li>
                     <li>Auto-generated listings</li>
                     <li>Buyer-property matching</li>
                     <li>Market analysis reports</li>
                 </ul>
+                <div class="product-price">From $500/month</div>
+                <button class="product-cta" onclick="window.open('https://wa.me/256705885118?text=Tell%20me%20about%20Real%20Estate%20AI', '_blank')">
+                    Get Started →
+                </button>
             </div>
             
-            <div class="service-card">
-                <span class="service-icon">📄</span>
-                <h3 class="service-title">Government Proposal AI</h3>
-                <p class="service-desc">
+            <!-- Expense Automation -->
+            <div class="product-card">
+                <div class="product-icon">📊</div>
+                <h3 class="product-title">Expense Automation</h3>
+                <p class="product-desc">
+                    Upload photo of receipt. AI extracts data, categorizes, updates spreadsheet, 
+                    generates reports. 2-3 hour nightmare becomes 30 seconds.
+                </p>
+                <ul class="product-features">
+                    <li>Receipt scanning (photo/PDF)</li>
+                    <li>Auto-categorization</li>
+                    <li>Bank statement sync</li>
+                    <li>Monthly report generation</li>
+                    <li>Export to QuickBooks/Xero</li>
+                </ul>
+                <div class="product-price">From $150/month</div>
+                <button class="product-cta" onclick="window.open('https://wa.me/256705885118?text=Tell%20me%20about%20Expense%20Automation', '_blank')">
+                    Get Started →
+                </button>
+            </div>
+            
+            <!-- Government Proposals -->
+            <div class="product-card">
+                <div class="product-icon">📄</div>
+                <h3 class="product-title">Government Proposal AI</h3>
+                <p class="product-desc">
                     Scrapes tender sites, analyzes requirements, writes winning proposals in your voice. 
                     From opportunity alert to submission-ready in 48 hours.
                 </p>
-                <div class="service-price">From $800/month + 2-5% success fee</div>
-                <ul class="service-features">
+                <ul class="product-features">
                     <li>Automated opportunity scraping</li>
                     <li>Requirement analysis</li>
                     <li>Proposal generation</li>
                     <li>Custom branding</li>
                     <li>Grant writing support</li>
                 </ul>
+                <div class="product-price">From $800/month + 2-5% success fee</div>
+                <button class="product-cta" onclick="window.open('https://wa.me/256705885118?text=Tell%20me%20about%20Government%20Proposal%20AI', '_blank')">
+                    Get Started →
+                </button>
             </div>
             
-            <div class="service-card">
-                <span class="service-icon">📊</span>
-                <h3 class="service-title">Expense Automation</h3>
-                <p class="service-desc">
-                    Upload photo of receipt. AI extracts data, categorizes, updates spreadsheet, 
-                    generates reports. 2-3 hour nightmare becomes 30 seconds.
+            <!-- Dental Emergency -->
+            <div class="product-card">
+                <div class="product-icon">🦷</div>
+                <h3 class="product-title">Dental Emergency AI</h3>
+                <p class="product-desc">
+                    Capture every 8pm emergency call. AI responds in 3 seconds, qualifies patient, 
+                    sends you instant alert. Stop losing $22,500/month to voicemail.
                 </p>
-                <div class="service-price">From $150/month</div>
-                <ul class="service-features">
-                    <li>Receipt scanning (photo/PDF)</li>
-                    <li>Auto-categorization</li>
-                    <li>Bank statement sync</li>
-                    <li>Monthly report generation</li>
-                    <li>Export to accounting software</li>
+                <ul class="product-features">
+                    <li>24/7 emergency response</li>
+                    <li>Patient qualification</li>
+                    <li>Multi-language support</li>
+                    <li>Instant notifications</li>
+                    <li>Custom branding</li>
                 </ul>
-            </div>
-            
-            <div class="service-card">
-                <span class="service-icon">💼</span>
-                <h3 class="service-title">Lead Generation & Resale</h3>
-                <p class="service-desc">
-                    We build you a lead machine. Capture 100+ qualified leads/month across industries. 
-                    Sell to companies in your network. Pure profit side hustle.
-                </p>
-                <div class="service-price">Custom pricing</div>
-                <ul class="service-features">
-                    <li>Multi-industry lead capture</li>
-                    <li>Lead verification system</li>
-                    <li>White-label dashboards</li>
-                    <li>Export capabilities</li>
-                    <li>Commission tracking</li>
-                </ul>
-            </div>
-            
-            <div class="service-card">
-                <span class="service-icon">🏢</span>
-                <h3 class="service-title">CLARITY Enterprise</h3>
-                <p class="service-desc">
-                    Full enterprise intelligence platform. Document analysis, compliance automation, 
-                    market intelligence, proposal writing. Your organization's AI brain.
-                </p>
-                <div class="service-price">From $2,000/month (Enterprise licensing available)</div>
-                <ul class="service-features">
-                    <li>Unlimited document processing</li>
-                    <li>Multi-modal analysis (text/audio/video)</li>
-                    <li>Team collaboration workspaces</li>
-                    <li>Custom domain accelerators</li>
-                    <li>White-label deployment</li>
-                </ul>
+                <div class="product-price">From $200/month</div>
+                <button class="product-cta" onclick="window.open('https://wa.me/256705885118?text=Tell%20me%20about%20Dental%20Emergency%20AI', '_blank')">
+                    Get Started →
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Real Estate Focus Section -->
-    <section id="realestate" class="realestate-section">
-        <div class="section-header">
-            <div class="section-label">REAL ESTATE AI REVOLUTION</div>
-            <h2 class="section-title">Why Real Estate Agents Are Our Biggest Winners</h2>
-            <p class="section-subtitle">
-                The #1 complaint from real estate clients is poor communication. 
-                AI solves this while automating 37% of an agent's tasks.
-            </p>
-        </div>
-        
-        <div class="realestate-stats">
-            <div class="stat-card">
-                <div class="stat-number">$731.6B</div>
-                <div class="stat-label">AI in Real Estate Market by 2028</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">68%</div>
-                <div class="stat-label">Switch Due to Poor Communication</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">37%</div>
-                <div class="stat-label">Tasks Automated with AI</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Lead Response Time</div>
-            </div>
-        </div>
-        
-        <div class="services-grid" style="margin-top: 60px;">
-            <div class="service-card">
-                <span class="service-icon">💬</span>
-                <h3 class="service-title">Instant Lead Response</h3>
-                <p class="service-desc">
-                    Buyer inquiries at 10pm? AI responds instantly. Captures contact info, budget, timeline, 
-                    property preferences. Books showing for next day. Never miss a hot lead again.
+    <!-- CLARITY Engine Spotlight -->
+    <section id="clarity" class="clarity-spotlight">
+        <div class="clarity-content">
+            <div class="clarity-logo">CLARITY</div>
+            <div class="section-header" style="color: white;">
+                <div class="section-label" style="color: white;">ENTERPRISE INTELLIGENCE PLATFORM</div>
+                <h2 class="section-title" style="color: white;">Your Organization's Second Brain</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.95);">
+                    CLARITY transforms document chaos into strategic intelligence. Upload contracts, audits, 
+                    financials, specs—receive expert analysis in minutes, not weeks.
                 </p>
             </div>
             
-            <div class="service-card">
-                <span class="service-icon">🏡</span>
-                <h3 class="service-title">AI Property Valuations</h3>
-                <p class="service-desc">
-                    Analyzes comparable sales, market trends, neighborhood data, property features. 
-                    Provides accurate pricing in seconds. More precise than traditional methods.
-                </p>
+            <div class="clarity-features">
+                <div class="clarity-feature">
+                    <div class="feature-icon">🧠</div>
+                    <h3 class="feature-title">Expert-Level Analysis</h3>
+                    <p class="feature-desc">
+                        Domain Accelerators make CLARITY think like your best analyst. 
+                        Legal contracts? It thinks like a lawyer. Financial statements? Like an auditor.
+                    </p>
+                </div>
+                
+                <div class="clarity-feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Intelligence Vault</h3>
+                    <p class="feature-desc">
+                        Perfect memory that learns your business. Past projects, templates, processes. 
+                        The more you use it, the smarter it gets.
+                    </p>
+                </div>
+                
+                <div class="clarity-feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Multi-Modal Intelligence</h3>
+                    <p class="feature-desc">
+                        Reads scanned documents (OCR), transcribes meeting recordings, analyzes video. 
+                        Complete 360° data understanding.
+                    </p>
+                </div>
+                
+                <div class="clarity-feature">
+                    <div class="feature-icon">👥</div>
+                    <h3 class="feature-title">Team Collaboration</h3>
+                    <p class="feature-desc">
+                        Secure workspaces where your entire team shares insights. 
+                        No more duplicate analysis. Everyone works from validated intelligence.
+                    </p>
+                </div>
+                
+                <div class="clarity-feature">
+                    <div class="feature-icon">⚖️</div>
+                    <h3 class="feature-title">Compliance Automation</h3>
+                    <p class="feature-desc">
+                        Handles Legal, Financial, Security, Healthcare, Engineering audits automatically. 
+                        Flags non-compliance in seconds.
+                    </p>
+                </div>
+                
+                <div class="clarity-feature">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Strategic Intelligence</h3>
+                    <p class="feature-desc">
+                        Market analysis, competitive intelligence, investor due diligence, corporate research. 
+                        Transforms raw data into boardroom-ready insights.
+                    </p>
+                </div>
             </div>
             
-            <div class="service-card">
-                <span class="service-icon">✍️</span>
-                <h3 class="service-title">Listing Descriptions</h3>
-                <p class="service-desc">
-                    Upload property photos. AI writes compelling descriptions highlighting key features, 
-                    neighborhood benefits, investment potential. SEO-optimized for maximum visibility.
-                </p>
-            </div>
-            
-            <div class="service-card">
-                <span class="service-icon">🎯</span>
-                <h3 class="service-title">Smart Client Matching</h3>
-                <p class="service-desc">
-                    Analyzes buyer preferences, budget, lifestyle. Matches with perfect properties. 
-                    Sends personalized recommendations. Shortens sales cycle by 40%.
-                </p>
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="https://wa.me/256705885118?text=Tell%20me%20about%20CLARITY%20Enterprise" class="btn-primary" style="background: white; color: var(--primary);">
+                    Schedule CLARITY Demo →
+                </a>
+                <p style="margin-top: 20px; font-size: 18px;">From $2,000/month | Enterprise licensing available</p>
             </div>
         </div>
     </section>
 
     <!-- ROI Calculator -->
     <section id="roi" class="roi-section">
-        <div class="roi-grid">
+        <div class="section-header">
+            <div class="section-label">THE MATH THAT MATTERS</div>
+            <h2 class="section-title">Real Numbers. Real Savings.</h2>
+        </div>
+        
+        <div class="roi-container">
             <div class="roi-content">
-                <h2>The Math That Makes This a No-Brainer</h2>
+                <h2>The Cost of Doing Nothing</h2>
                 <p>
                     <strong>Real Estate Agent Scenario:</strong><br>
                     You're losing 30 leads/month to poor after-hours communication.
@@ -1290,7 +1282,7 @@
                     You capture those 30 leads.<br>
                     You make an extra $432,000/year.
                 </p>
-                <p style="font-size: 32px; margin-top: 30px; color: #ffd700; font-weight: 900;">
+                <p style="font-size: 32px; margin-top: 30px; color: var(--primary); font-weight: 900;">
                     That's an 86,400% ROI.
                 </p>
             </div>
@@ -1320,6 +1312,61 @@
         </div>
     </section>
 
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="section-header">
+            <div class="section-label">SUCCESS STORIES</div>
+            <h2 class="section-title">What Our Clients Say</h2>
+        </div>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">
+                    "We were losing 40+ emergency calls per month. Since implementing Clarity Pearl's AI, 
+                    we've captured every single one. Revenue up $28,000 in the first month alone."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">🦷</div>
+                    <div class="author-info">
+                        <h4>Dr. Sarah Martinez</h4>
+                        <p>Bright Smile Dental, Miami</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">
+                    "The Executive Assistant AI gave me 12 hours back per week. No more email hell, 
+                    no more scheduling nightmares. I can focus on actually running my business."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👔</div>
+                    <div class="author-info">
+                        <h4>James Wilson</h4>
+                        <p>CEO, TechStart Solutions</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">
+                    "CLARITY processed 2,000 pages of compliance documents in 10 minutes. 
+                    Would have taken our team 3 weeks. The ROI is insane."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">⚖️</div>
+                    <div class="author-info">
+                        <h4>Maria Chen</h4>
+                        <p>Compliance Director, FinTech Corp</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Final CTA -->
     <section class="final-cta">
         <h2>Ready to Stop Losing Money?</h2>
@@ -1327,21 +1374,21 @@
             Let's build your AI system this week. You'll be capturing leads by next Monday.
         </p>
         
-        <div class="cta-group">
-            <a href="https://wa.me/256705885118?text=I%20want%20to%20build%20an%20AI%20system" class="btn btn-primary">
+        <div class="cta-group" style="justify-content: center;">
+            <a href="https://wa.me/256705885118?text=I%20want%20to%20build%20an%20AI%20system" class="btn-primary">
                 📱 WhatsApp: +256 705 885118
             </a>
-            <a href="mailto:nsubugacollin@gmail.com" class="btn btn-secondary">
+            <a href="mailto:nsubugacollin@gmail.com" class="btn-secondary">
                 📧 nsubugacollin@gmail.com
             </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="footer-content">
             <div>
-                <div class="footer-brand">⚡ CLARITY AI</div>
+                <div class="footer-brand">🦷 Clarity Pearl</div>
                 <p class="footer-desc">
                     Enterprise intelligence and AI automation solutions. From $200/month lead capture 
                     to $500K enterprise platforms. Building AI that actually works.
@@ -1349,16 +1396,17 @@
                 <div class="footer-contact">
                     <a href="https://wa.me/256705885118">📱 +256 705 885118</a>
                     <a href="mailto:nsubugacollin@gmail.com">📧 nsubugacollin@gmail.com</a>
+                    <a href="#">🌍 Kampala, Uganda</a>
                 </div>
             </div>
             
             <div>
                 <div class="footer-title">Small Business</div>
                 <div class="footer-links">
-                    <a href="#services">Lead Capture AI</a>
-                    <a href="#services">Lead Qualifier</a>
-                    <a href="#services">Appointment Scheduler</a>
-                    <a href="#services">Expense Automation</a>
+                    <a href="#products">Lead Capture AI</a>
+                    <a href="#products">Executive Assistant</a>
+                    <a href="#products">Meeting Management</a>
+                    <a href="#products">Expense Automation</a>
                 </div>
             </div>
             
@@ -1366,9 +1414,9 @@
                 <div class="footer-title">Enterprise</div>
                 <div class="footer-links">
                     <a href="#clarity">CLARITY Platform</a>
-                    <a href="#clarity">Compliance Automation</a>
-                    <a href="#services">Proposal Writer</a>
-                    <a href="#realestate">Real Estate AI</a>
+                    <a href="#products">Sales Development</a>
+                    <a href="#products">Proposal Writer</a>
+                    <a href="#products">Real Estate AI</a>
                 </div>
             </div>
             
@@ -1384,20 +1432,18 @@
         </div>
         
         <div class="footer-bottom">
-            © 2025 CLARITY AI by Collin Nsubuga. All rights reserved.
+            © 2025 Clarity Pearl by Collin Nsubuga. All rights reserved.
         </div>
     </footer>
 
+    <!-- Chat Trigger -->
+    <div class="chat-trigger" onclick="if(window.chatbase) { chatbase('open'); }" title="Chat with our AI">
+        💬
+    </div>
+
+    <!-- Chatbase Integration -->
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="e2723_IYRTaOWIy8y2GBS";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
     </script>
 </body>
 </html>
