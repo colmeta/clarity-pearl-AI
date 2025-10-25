@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLARITY AI - Enterprise Intelligence & AI Automation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --dark: #0a0a0f;
+            --darker: #050508;
+            --light: rgba(255, 255, 255, 0.9);
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--light);
+            background: var(--darker);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 clamp(20px, 5vw, 80px);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .navbar.scrolled {
+            height: 60px;
+            background: rgba(10, 10, 15, 0.98);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 900;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            font-size: 28px;
+            filter: drop-shadow(0 0 10px var(--primary));
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: clamp(20px, 3vw, 40px);
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: white;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .nav-cta::after {
+            display: none;
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+        }
+        
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: radial-gradient(ellipse at top, rgba(102, 126, 234, 0.15), transparent 50%),
+                        radial-gradient(ellipse at bottom, rgba(118, 75, 162, 0.15), transparent 50%),
+                        var(--dark);
+            padding: 100px 20px 60px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 60s linear infinite;
+            opacity: 0.3;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(102, 126, 234, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            animation: pulse 3s infinite;
+            letter-spacing: 0.5px;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
+            50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
+        }
+        
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 90px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, var(--primary) 30%, var(--accent) 60%, var(--secondary) 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientFlow 5s ease infinite;
+        }
+        
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(18px, 2.5vw, 28px);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        .hero-description {
+            font-size: clamp(15px, 1.8vw, 19px);
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+        
+        .btn {
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.5);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Trust indicators */
+        .trust-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .trust-item {
+            text-align: center;
+        }
+        
+        .trust-number {
+            font-size: 42px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        
+        .trust-label {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 600;
+        }
+        
+        /* Section styling */
+        section {
+            padding: clamp(60px, 10vw, 120px) clamp(20px, 5vw, 80px);
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 60px;
+        }
+        
+        .section-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            padding: 5px 15px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 20px;
+        }
+        
+        .section-title {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+        
+        .section-subtitle {
+            font-size: clamp(16px, 2vw, 20px);
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+        }
+        
+        /* Problem cards */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .problem-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(239, 68, 68, 0.5);
+            box-shadow: 0 20px 60px rgba(239, 68, 68, 0.2);
+        }
+        
+        .problem-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .problem-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .problem-title {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        
+        .problem-desc {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .problem-cost {
+            font-size: 28px;
+            font-weight: 900;
+            color: #ef4444;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* CLARITY Enterprise */
+        .clarity-section {
+            background: radial-gradient(ellipse at center, rgba(102, 126, 234, 0.1), transparent 70%);
+            position: relative;
+        }
+        
+        .clarity-logo {
+            font-size: 64px;
+            font-weight: 900;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+        
+        .clarity-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .clarity-feature {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.4s;
+        }
+        
+        .clarity-feature:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 25px 70px rgba(102, 126, 234, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .feature-icon {
+            font-size: 52px;
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
+        
+        .feature-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        
+        .feature-desc {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+        }
+        
+        /* Services grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 25px 70px rgba(102, 126, 234, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .service-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        
+        .service-desc {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .service-price {
+            font-size: 18px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: 15px;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .service-features li {
+            padding: 10px 0;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        /* ROI Calculator */
+        .roi-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .roi-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 60%);
+            animation: roiFloat 20s ease-in-out infinite;
+        }
+        
+        @keyframes roiFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, 30px) rotate(10deg); }
+        }
+        
+        .roi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .roi-content h2 {
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 900;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        
+        .roi-content p {
+            font-size: 19px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .roi-calculator {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(30px);
+            border-radius: 25px;
+            padding: 45px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .roi-stat {
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        .roi-stat:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .roi-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .roi-number {
+            font-size: 44px;
+            font-weight: 900;
+            color: #ffd700;
+            margin-bottom: 5px;
+        }
+        
+        .roi-description {
+            font-size: 14px;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+        
+        /* Real Estate Focus */
+        .realestate-section {
+            background: var(--dark);
+        }
+        
+        .realestate-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 600;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: radial-gradient(ellipse at center, rgba(102, 126, 234, 0.15), transparent 70%);
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: clamp(36px, 6vw, 68px);
+            font-weight: 900;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+        
+        .final-cta p {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--darker);
+            padding: 80px clamp(20px, 5vw, 80px) 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto 50px;
+        }
+        
+        .footer-brand {
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+        
+        .footer-desc {
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+        
+        .footer-contact a {
+            color: var(--primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .footer-contact a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-title {
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .roi-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .services-grid,
+            .problem-grid,
+            .clarity-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            <span class="logo-icon">⚡</span>
+            <span>CLARITY AI</span>
+        </a>
+        <div class="nav-links">
+            <a href="#problems">Problems</a>
+            <a href="#clarity">Enterprise</a>
+            <a href="#services">Services</a>
+            <a href="#realestate">Real Estate</a>
+            <a href="#roi">ROI</a>
+            <a href="https://wa.me/256705885118" class="nav-cta">Get Started →</a>
+        </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                ✨ Trusted by Fortune 500s & Real Estate Leaders
+            </div>
+            
+            <h1>
+                Stop Working.<br>
+                <span class="gradient-text">Start Automating.</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                From $200/month AI agents to $500K enterprise intelligence platforms
+            </p>
+            
+            <p class="hero-description">
+                We build AI that captures leads 24/7, automates compliance audits, writes winning proposals, 
+                and transforms document chaos into actionable intelligence. One partner. Zero bullshit.
+            </p>
+            
+            <div class="cta-group">
+                <a href="#services" class="btn btn-primary">
+                    🚀 Small Business Solutions
+                </a>
+                <a href="#clarity" class="btn btn-secondary">
+                    🏢 Enterprise Intelligence
+                </a>
+            </div>
+            
+            <div class="trust-bar">
+                <div class="trust-item">
+                    <div class="trust-number">$731.6B</div>
+                    <div class="trust-label">AI in Real Estate by 2028</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">90%</div>
+                    <div class="trust-label">Time Saved on Analysis</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">37%</div>
+                    <div class="trust-label">Tasks Automated</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">68%</div>
+                    <div class="trust-label">Switch Due to Poor Communication</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problems">
+        <div class="section-header">
+            <div class="section-label">THE INVISIBLE TAX</div>
+            <h2 class="section-title">Your Team is Hemorrhaging Money</h2>
+            <p class="section-subtitle">Every manual task is revenue walking out the door</p>
+        </div>
+        
+        <div class="problem-grid">
+            <div class="problem-card">
+                <span class="problem-icon">📧</span>
+                <h3 class="problem-title">Expense Reports</h3>
+                <p class="problem-desc">
+                    2-3 hours monthly hunting receipts, categorizing expenses, fighting Excel templates. 
+                    Your CFO's team wastes 40% of their time on data entry.
+                </p>
+                <div class="problem-cost">💸 $5,400/year lost per employee</div>
+            </div>
+            
+            <div class="problem-card">
+                <span class="problem-icon">📞</span>
+                <h3 class="problem-title">After-Hours Leads</h3>
+                <p class="problem-desc">
+                    30-40 qualified buyers call when you're closed. No voicemail. They hire your competitor by morning.
+                    68% of customers switch due to poor communication.
+                </p>
+                <div class="problem-cost">💸 $36,000/year lost</div>
+            </div>
+            
+            <div class="problem-card">
+                <span class="problem-icon">📄</span>
+                <h3 class="problem-title">Document Review</h3>
+                <p class="problem-desc">
+                    Lawyers at $400/hour reading contracts. Auditors spending weeks on compliance. 
+                    Engineers buried in specs. Genius wasted on paperwork.
+                </p>
+                <div class="problem-cost">💸 $150K+/year lost</div>
+            </div>
+            
+            <div class="problem-card">
+                <span class="problem-icon">🏠</span>
+                <h3 class="problem-title">Real Estate Response Time</h3>
+                <p class="problem-desc">
+                    Buyers expect instant responses. Every hour delay = 20% drop in conversion. 
+                    Your competitors with AI are stealing your deals.
+                </p>
+                <div class="problem-cost">💸 $48,000/year lost</div>
+            </div>
+            
+            <div class="problem-card">
+                <span class="problem-icon">⚖️</span>
+                <h3 class="problem-title">Compliance Audits</h3>
+                <p class="problem-desc">
+                    Manual compliance checks take 40+ hours. Miss one regulation = $250K fine. 
+                    Healthcare, finance, legal drowning in paperwork.
+                </p>
+                <div class="problem-cost">💸 $280K/year in risk + labor</div>
+            </div>
+            
+            <div class="problem-card">
+                <span class="problem-icon">💼</span>
+                <h3 class="problem-title">Government Proposals</h3>
+                <p class="problem-desc">
+                    Writing RFP responses takes 80+ hours. Miss deadlines. Generic proposals lose. 
+                    $500K contracts going to competitors with better systems.
+                </p>
+                <div class="problem-cost">💸 $2M+ in lost contracts</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLARITY Enterprise Section -->
+    <section id="clarity" class="clarity-section">
+        <div class="section-header">
+            <div class="clarity-logo">CLARITY</div>
+            <div class="section-label">ENTERPRISE INTELLIGENCE PLATFORM</div>
+            <h2 class="section-title">Your Organization's Second Brain</h2>
+            <p class="section-subtitle">
+                CLARITY transforms document chaos into strategic intelligence. Upload contracts, audits, 
+                financials, specs—receive expert analysis in minutes, not weeks.
+            </p>
+        </div>
+        
+        <div class="clarity-features">
+            <div class="clarity-feature">
+                <span class="feature-icon">🧠</span>
+                <h3 class="feature-title">Expert-Level Analysis</h3>
+                <p class="feature-desc">
+                    Domain Accelerators make CLARITY think like your best analyst. 
+                    Legal contracts? It thinks like a lawyer. Financial statements? Like an auditor.
+                </p>
+            </div>
+            
+            <div class="clarity-feature">
+                <span class="feature-icon">🔒</span>
+                <h3 class="feature-title">Intelligence Vault</h3>
+                <p class="feature-desc">
+                    Perfect memory that learns your business. Past projects, templates, processes. 
+                    The more you use it, the smarter it gets. Your organization's institutional knowledge, secured.
+                </p>
+            </div>
+            
+            <div class="clarity-feature">
+                <span class="feature-icon">🎯</span>
+                <h3 class="feature-title">Multi-Modal Intelligence</h3>
+                <p class="feature-desc">
+                    Reads scanned documents (OCR), transcribes meeting recordings, analyzes video. 
+                    Processes photos of receipts. Complete 360° data understanding.
+                </p>
+            </div>
+            
+            <div class="clarity-feature">
+                <span class="feature-icon">👥</span>
+                <h3 class="feature-title">Team Collaboration</h3>
+                <p class="feature-desc">
+                    Secure workspaces where your entire team shares insights. 
+                    No more duplicate analysis. Everyone works from validated intelligence.
+                </p>
+            </div>
+            
+            <div class="clarity-feature">
+                <span class="feature-icon">⚖️</span>
+                <h3 class="feature-title">Compliance Automation</h3>
+                <p class="feature-desc">
+                    Handles Legal, Financial, Security, Healthcare, Engineering audits automatically. 
+                    Flags non-compliance in seconds. Generates audit-ready reports.
+                </p>
+            </div>
+            
+            <div class="clarity-feature">
+                <span class="feature-icon">📊</span>
+                <h3 class="feature-title">Strategic Intelligence</h3>
+                <p class="feature-desc">
+                    Market analysis, competitive intelligence, investor due diligence, corporate research. 
+                    Transforms raw data into boardroom-ready insights.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header">
+            <div class="section-label">SOLUTIONS FOR EVERY BUSINESS</div>
+            <h2 class="section-title">AI That Actually Makes Money</h2>
+            <p class="section-subtitle">No fluff. No theory. Just working systems that capture revenue.</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">🤖</span>
+                <h3 class="service-title">24/7 Lead Capture AI</h3>
+                <p class="service-desc">
+                    Website visitors message at 2am? AI responds in 3 seconds. Captures name, email, phone, needs. 
+                    You wake up to hot leads, not missed opportunities.
+                </p>
+                <div class="service-price">From $200/month</div>
+                <ul class="service-features">
+                    <li>Website chat integration</li>
+                    <li>WhatsApp + Facebook automation</li>
+                    <li>Instant email notifications</li>
+                    <li>95+ languages supported</li>
+                    <li>CRM auto-sync</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">🎯</span>
+                <h3 class="service-title">Smart Lead Qualifier</h3>
+                <p class="service-desc">
+                    Stop wasting time on tire-kickers. AI asks qualifying questions, scores Hot/Warm/Cold, 
+                    sends only ready-to-buy prospects. Focus on closers, not browsers.
+                </p>
+                <div class="service-price">From $300/month</div>
+                <ul class="service-features">
+                    <li>Automated qualification flow</li>
+                    <li>Budget & timeline detection</li>
+                    <li>Lead scoring algorithm</li>
+                    <li>Priority alerts for hot leads</li>
+                    <li>Full conversation history</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">📅</span>
+                <h3 class="service-title">AI Appointment Scheduler</h3>
+                <p class="service-desc">
+                    "Can I book next Tuesday?" AI checks calendar, books slot, sends confirmations, 
+                    reminds 24hrs before. Handles reschedules. Zero human involvement.
+                </p>
+                <div class="service-price">From $300/month</div>
+                <ul class="service-features">
+                    <li>Natural language booking</li>
+                    <li>Google Calendar sync</li>
+                    <li>Automatic reminders (SMS/Email)</li>
+                    <li>Time zone detection</li>
+                    <li>Reschedule handling</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">🏠</span>
+                <h3 class="service-title">Real Estate AI Suite</h3>
+                <p class="service-desc">
+                    24/7 buyer/seller inquiries, property valuation, listing descriptions, 
+                    client matching, market analysis. Everything real estate agents need.
+                </p>
+                <div class="service-price">From $500/month</div>
+                <ul class="service-features">
+                    <li>Instant lead response</li>
+                    <li>AI property valuations</li>
+                    <li>Auto-generated listings</li>
+                    <li>Buyer-property matching</li>
+                    <li>Market analysis reports</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">📄</span>
+                <h3 class="service-title">Government Proposal AI</h3>
+                <p class="service-desc">
+                    Scrapes tender sites, analyzes requirements, writes winning proposals in your voice. 
+                    From opportunity alert to submission-ready in 48 hours.
+                </p>
+                <div class="service-price">From $800/month + 2-5% success fee</div>
+                <ul class="service-features">
+                    <li>Automated opportunity scraping</li>
+                    <li>Requirement analysis</li>
+                    <li>Proposal generation</li>
+                    <li>Custom branding</li>
+                    <li>Grant writing support</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">📊</span>
+                <h3 class="service-title">Expense Automation</h3>
+                <p class="service-desc">
+                    Upload photo of receipt. AI extracts data, categorizes, updates spreadsheet, 
+                    generates reports. 2-3 hour nightmare becomes 30 seconds.
+                </p>
+                <div class="service-price">From $150/month</div>
+                <ul class="service-features">
+                    <li>Receipt scanning (photo/PDF)</li>
+                    <li>Auto-categorization</li>
+                    <li>Bank statement sync</li>
+                    <li>Monthly report generation</li>
+                    <li>Export to accounting software</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">💼</span>
+                <h3 class="service-title">Lead Generation & Resale</h3>
+                <p class="service-desc">
+                    We build you a lead machine. Capture 100+ qualified leads/month across industries. 
+                    Sell to companies in your network. Pure profit side hustle.
+                </p>
+                <div class="service-price">Custom pricing</div>
+                <ul class="service-features">
+                    <li>Multi-industry lead capture</li>
+                    <li>Lead verification system</li>
+                    <li>White-label dashboards</li>
+                    <li>Export capabilities</li>
+                    <li>Commission tracking</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">🏢</span>
+                <h3 class="service-title">CLARITY Enterprise</h3>
+                <p class="service-desc">
+                    Full enterprise intelligence platform. Document analysis, compliance automation, 
+                    market intelligence, proposal writing. Your organization's AI brain.
+                </p>
+                <div class="service-price">From $2,000/month (Enterprise licensing available)</div>
+                <ul class="service-features">
+                    <li>Unlimited document processing</li>
+                    <li>Multi-modal analysis (text/audio/video)</li>
+                    <li>Team collaboration workspaces</li>
+                    <li>Custom domain accelerators</li>
+                    <li>White-label deployment</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Estate Focus Section -->
+    <section id="realestate" class="realestate-section">
+        <div class="section-header">
+            <div class="section-label">REAL ESTATE AI REVOLUTION</div>
+            <h2 class="section-title">Why Real Estate Agents Are Our Biggest Winners</h2>
+            <p class="section-subtitle">
+                The #1 complaint from real estate clients is poor communication. 
+                AI solves this while automating 37% of an agent's tasks.
+            </p>
+        </div>
+        
+        <div class="realestate-stats">
+            <div class="stat-card">
+                <div class="stat-number">$731.6B</div>
+                <div class="stat-label">AI in Real Estate Market by 2028</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">68%</div>
+                <div class="stat-label">Switch Due to Poor Communication</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">37%</div>
+                <div class="stat-label">Tasks Automated with AI</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Lead Response Time</div>
+            </div>
+        </div>
+        
+        <div class="services-grid" style="margin-top: 60px;">
+            <div class="service-card">
+                <span class="service-icon">💬</span>
+                <h3 class="service-title">Instant Lead Response</h3>
+                <p class="service-desc">
+                    Buyer inquiries at 10pm? AI responds instantly. Captures contact info, budget, timeline, 
+                    property preferences. Books showing for next day. Never miss a hot lead again.
+                </p>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">🏡</span>
+                <h3 class="service-title">AI Property Valuations</h3>
+                <p class="service-desc">
+                    Analyzes comparable sales, market trends, neighborhood data, property features. 
+                    Provides accurate pricing in seconds. More precise than traditional methods.
+                </p>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">✍️</span>
+                <h3 class="service-title">Listing Descriptions</h3>
+                <p class="service-desc">
+                    Upload property photos. AI writes compelling descriptions highlighting key features, 
+                    neighborhood benefits, investment potential. SEO-optimized for maximum visibility.
+                </p>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">🎯</span>
+                <h3 class="service-title">Smart Client Matching</h3>
+                <p class="service-desc">
+                    Analyzes buyer preferences, budget, lifestyle. Matches with perfect properties. 
+                    Sends personalized recommendations. Shortens sales cycle by 40%.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section id="roi" class="roi-section">
+        <div class="roi-grid">
+            <div class="roi-content">
+                <h2>The Math That Makes This a No-Brainer</h2>
+                <p>
+                    <strong>Real Estate Agent Scenario:</strong><br>
+                    You're losing 30 leads/month to poor after-hours communication.
+                </p>
+                <p>
+                    Average commission per deal: $8,000<br>
+                    Conversion rate: 15%
+                </p>
+                <p>
+                    <strong>30 leads × 15% = 4.5 deals/month lost</strong><br>
+                    <strong>4.5 × $8,000 = $36,000/month GONE</strong><br>
+                    <strong>= $432,000/year walking away</strong>
+                </p>
+                <p style="margin-top: 30px;">
+                    Our AI costs $500/month.<br>
+                    You capture those 30 leads.<br>
+                    You make an extra $432,000/year.
+                </p>
+                <p style="font-size: 32px; margin-top: 30px; color: #ffd700; font-weight: 900;">
+                    That's an 86,400% ROI.
+                </p>
+            </div>
+            
+            <div class="roi-calculator">
+                <div class="roi-stat">
+                    <div class="roi-label">Annual Revenue Recovered</div>
+                    <div class="roi-number">$432,000</div>
+                    <div class="roi-description">Based on 30 missed leads/month at 15% close rate</div>
+                </div>
+                <div class="roi-stat">
+                    <div class="roi-label">Your Investment</div>
+                    <div class="roi-number">$6,000/yr</div>
+                    <div class="roi-description">$500/month for complete AI suite</div>
+                </div>
+                <div class="roi-stat">
+                    <div class="roi-label">Time to Break Even</div>
+                    <div class="roi-number">4 hours</div>
+                    <div class="roi-description">First captured lead pays for entire year</div>
+                </div>
+                <div class="roi-stat">
+                    <div class="roi-label">Setup Time</div>
+                    <div class="roi-number">3-5 Days</div>
+                    <div class="roi-description">From initial call to fully operational</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>Ready to Stop Losing Money?</h2>
+        <p>
+            Let's build your AI system this week. You'll be capturing leads by next Monday.
+        </p>
+        
+        <div class="cta-group">
+            <a href="https://wa.me/256705885118?text=I%20want%20to%20build%20an%20AI%20system" class="btn btn-primary">
+                📱 WhatsApp: +256 705 885118
+            </a>
+            <a href="mailto:nsubugacollin@gmail.com" class="btn btn-secondary">
+                📧 nsubugacollin@gmail.com
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <div class="footer-brand">⚡ CLARITY AI</div>
+                <p class="footer-desc">
+                    Enterprise intelligence and AI automation solutions. From $200/month lead capture 
+                    to $500K enterprise platforms. Building AI that actually works.
+                </p>
+                <div class="footer-contact">
+                    <a href="https://wa.me/256705885118">📱 +256 705 885118</a>
+                    <a href="mailto:nsubugacollin@gmail.com">📧 nsubugacollin@gmail.com</a>
+                </div>
+            </div>
+            
+            <div>
+                <div class="footer-title">Small Business</div>
+                <div class="footer-links">
+                    <a href="#services">Lead Capture AI</a>
+                    <a href="#services">Lead Qualifier</a>
+                    <a href="#services">Appointment Scheduler</a>
+                    <a href="#services">Expense Automation</a>
+                </div>
+            </div>
+            
+            <div>
+                <div class="footer-title">Enterprise</div>
+                <div class="footer-links">
+                    <a href="#clarity">CLARITY Platform</a>
+                    <a href="#clarity">Compliance Automation</a>
+                    <a href="#services">Proposal Writer</a>
+                    <a href="#realestate">Real Estate AI</a>
+                </div>
+            </div>
+            
+            <div>
+                <div class="footer-title">Resources</div>
+                <div class="footer-links">
+                    <a href="#roi">ROI Calculator</a>
+                    <a href="#problems">Use Cases</a>
+                    <a href="https://wa.me/256705885118">Book Demo</a>
+                    <a href="mailto:nsubugacollin@gmail.com">Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            © 2025 CLARITY AI by Collin Nsubuga. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
